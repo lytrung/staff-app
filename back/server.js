@@ -11,7 +11,7 @@ const API_PORT = 3001;
 //Mongodb connection
 const dbRoute = "mongodb://staffadmin:password12345@cluster0-shard-00-00-eciac.mongodb.net:27017,cluster0-shard-00-01-eciac.mongodb.net:27017,cluster0-shard-00-02-eciac.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true";
 mongoose.connect(dbRoute,{ useNewUrlParser: true });
-let db = mongoose.connection;
+var  db = mongoose.connection;
 db.once("open", () => console.log("connected to the database"));
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
@@ -59,7 +59,7 @@ router.get('/staffs/:id', function (req, res) {
 })
 
 router.post("/staffs", (req, res) => {
-	let staff = new Staff();
+	var staff = new Staff();
 	const {name, role, description } = req.body;
 	console.log(req.body);
 

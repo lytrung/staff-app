@@ -23,6 +23,13 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(logger("dev"));
 
 
+
+app.get('/simple-cors', cors(), function(req, res){
+  res.json({
+    text: 'Simple CORS requests are working. [GET]'
+  });
+});
+
 // define the home page route
 router.get('/', function (req, res) {
 

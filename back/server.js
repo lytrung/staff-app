@@ -17,10 +17,11 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 
 var app = express();
+app.use(cors());
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(logger("dev"));
-app.use(cors());
+
 
 // define the home page route
 router.get('/', function (req, res) {

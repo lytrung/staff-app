@@ -14,6 +14,8 @@ import AddStaffPage from './add-staff.jsx';
 import EditStaffPage from './edit-staff.jsx';
 import LoginPage from './login.jsx';
 
+// const backendDomain = 'http://localhost:3001';
+const backendDomain = 'https://3001-dot-7405871-dot-devshell.appspot.com';
 
 // Init plugin
 Framework7.use(Framework7React);
@@ -49,7 +51,7 @@ class MyApp extends Component {
 
 
   staffDataAdd(staff){
-    axios.post("http://localhost:3001/api/staffs", staff)
+    axios.post(backendDomain + "/api/staffs", staff)
         .then(()=>this.staffDataFetch());
 
     this.setState({greeting:'Hello When staff added'},()=>{
@@ -61,7 +63,7 @@ class MyApp extends Component {
 
   staffDataUpdate = (staff) =>{
 
-    axios.put("http://localhost:3001/api/staffs/"+staff.id, staff)
+    axios.put(backendDomain + "/api/staffs/"+staff.id, staff)
         .then(()=>this.staffDataFetch());
 
 
@@ -70,7 +72,7 @@ class MyApp extends Component {
 
   staffDataDelete = (id) =>{
 
-    axios.delete("http://localhost:3001/api/staffs/"+id)
+    axios.delete(backendDomain + "/api/staffs/"+id)
         .then(()=>this.staffDataFetch());
 
   }
@@ -78,7 +80,7 @@ class MyApp extends Component {
 
   staffDataFetch(){
     console.log('fetch data');
-    axios.get("http://localhost:3001/api/staffs")
+    axios.get(backendDomain + "/api/staffs")
           .then(res => {
 
             console.log(res.data.staffs);
